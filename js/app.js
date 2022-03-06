@@ -44,6 +44,13 @@ UI.prototype.clearFields = function(){
 
 };
 
+UI.prototype.deleteBookFromList = function(target) {
+    if (target.className === "delete") {
+        target.parentElement.parentElement.remove();
+    }
+
+}
+
 
 
 
@@ -67,5 +74,14 @@ document.getElementById("book-form").addEventListener("submit", (e) => {
 
     e.preventDefault();
 });
+
+
+document.getElementById("book-list").addEventListener("click", (e) => {
+    const ui = new UI();
+    ui.deleteBookFromList(e.target);
+    ui.showAlert("Book Deleted!","success");
+
+    e.preventDefault();
+})
 
 
